@@ -1,11 +1,11 @@
 <template>
   <div>
     <h1>Projects</h1>
-    <div class="loading" v-if="loading">Loading</div>
+    <img class="loading" src="../assets/loading.gif" alt="Loading gif" v-if="loading" />
     <div class="project" v-if="!loading">
       <ul>
         <li v-for="project in projects" :key="project._id">
-          <a :href="'#/' +  project._id">{{ project.name }}</a>
+          <a :href="'#' +  project._id">{{ project.name }}</a>
         </li>
       </ul>
     </div>
@@ -28,4 +28,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.loading {
+    height: 20%;
+    width: 20%;
+}
+</style>
 

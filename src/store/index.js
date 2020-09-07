@@ -7,41 +7,50 @@ import gql from 'graphql-tag';
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    loading: false,
-    projects: []
-  },
-  mutations: {
-    SET_PROJECTS(state, projects) {
-      state.projects = projects
+    state: {
+        loading: false,
+        projects: []
     },
-    SET_LOADING(state, loading) {
-      state.loading = loading
-    }
-  },
-  getters: {
-    projects: state => state.projects,
-    loading: state => state.loading,
-  },
-  actions: {
-    async fetchProjects({ commit }) {
-      commit('SET_LOADING', true)
-      const response = await apolloClient.query({
-        query: gql`
-        query {
-          projects{
-            _id,
-            name,
-            description,
-            date
-          }
+    mutations: {
+        SET_PROJECTS(state, projects) {
+            state.projects = projects
+        },
+        SET_LOADING(state, loading) {
+            state.loading = loading
         }
-      `,
-      });
-      commit('SET_PROJECTS', response.data.projects);
-      commit('SET_LOADING', false);
     },
-  },
-  modules: {
-  }
+    getters: {
+        projects: state => state.projects,
+        loading: state => state.loading,
+    },
+    actions: {
+        async fetchProjects({ commit }) {
+            commit('SET_LOADING', true)
+            try {
+                const response = await apolloClient.query({
+                    query: gql`
+                    query {
+                          projects{
+                                _id,
+                                name,
+                                description,
+                                date,
+                                category,
+                                language,
+                          }
+                    }
+                    `,
+                });
+                console.log(response)
+                if (response) {
+                    commit('SET_PROJECTS', response.data.projects)
+                }
+            } catch (e) {
+                Vue.prototype.$snotify.error("Can't fetch data", "error")
+            }
+            commit('SET_LOADING', false);
+        },
+    },
+    modules: {
+    }
 })

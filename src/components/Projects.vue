@@ -29,10 +29,5 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.loading {
-    height: 20%;
-    width: 20%;
-}
-</style>
+<style lang="scss"></style>
 

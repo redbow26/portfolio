@@ -6,8 +6,11 @@ import store from './store'
 import apolloProvider from './vue-apollo'
 import Snotify from 'vue-snotify'
 import 'vue-snotify/styles/dark.css'
+import './Boostrap-vue'
 
 Vue.config.productionTip = false
+
+import '@/assets/style/custom.scss'
 
 const option = {
   toast : {

@@ -1,0 +1,12 @@
+@import "src/assets/style/custom";
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+}
+.skills h2 {
+  text-align: center;
+}

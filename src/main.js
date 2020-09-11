@@ -13,16 +13,18 @@ Vue.config.productionTip = false
 import '@/assets/style/custom.scss'
 
 const option = {
-  toast : {
-    timeout: 3000
-  }
+    toast: {
+        timeout: 3000
+    }
 }
 
 Vue.use(Snotify, option)
 
 new Vue({
-  router,
-  store,
-  apolloProvider,
-  render: function (h) { return h(App) }
+    router,
+    store,
+    apolloProvider,
+    render: function (h) {
+        return h(App)
+    }
 }).$mount('#app')

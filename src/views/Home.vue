@@ -3,7 +3,7 @@
         <nav class="navbar">
             <ul class="navbar-nav">
                 <li class="logo">
-                    <a href="#" class="nav-link">
+                    <a class="nav-link">
                         <span class="link-text logo-text">Tristan</span>
                         <svg
                             aria-hidden="true"
@@ -32,7 +32,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a @click="switchComponent('About')" class="nav-link">
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -43,7 +43,8 @@
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 448 512">
                             <g class="fa-group">
-                                <path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"
+                                <path fill="currentColor"
+                                      d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"
                                       class="fa-secondary"></path>
                             </g>
                         </svg>
@@ -52,7 +53,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a @click="switchComponent('Projects')" class="nav-link">
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -71,12 +72,12 @@
                                 </path>
                             </g>
                         </svg>
-                        <span class="link-text">Projects</span>
+                        <span class="link-text">Projets</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a @click="switchComponent('Contact')" class="nav-link">
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -101,7 +102,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a @click="switchComponent('Skills')" class="nav-link">
                         <svg
                             aria-hidden="true"
                             focusable="false"
@@ -121,7 +122,7 @@
                                 </path>
                             </g>
                         </svg>
-                        <span class="link-text">Compétence</span>
+                        <span class="link-text">Compétences</span>
                     </a>
                 </li>
 
@@ -166,23 +167,26 @@
 
 <script>
 // @ is an alias to /src
-import About from "@/components/About";
-import Contact from "@/components/Contact";
-    import Projects from "@/components/Projects";
 
-    export default {
-        name: 'Home',
-        components: {
-            About,
-            Contact,
-            Projects
-        },
-        data() {
-            return {
-                component: "Projects"
-            }
+export default {
+    name: 'Home',
+    components: {
+        About: () => import("@/components/About"),
+        Contact: () => import("@/components/Contact"),
+        Projects: () => import("@/components/Projects"),
+        Skills: () => import('@/components/Skills')
+    },
+    data() {
+        return {
+            component: "Projects"
+        }
+    },
+    methods: {
+        switchComponent(component) {
+            this.component = component
         }
     }
+}
 </script>
 
 <style src="../assets/style/home.scss" lang="scss" scoped></style>

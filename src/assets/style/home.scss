@@ -4,6 +4,7 @@ main {
   margin-left: 5rem;
   padding: 2rem;
 }
+
 .navbar {
   position: fixed;
   background-color: $bg-primary-nav;
@@ -89,8 +90,7 @@ main {
   transition: $transition-speed-nav;
 }
 
-.logo-text
-{
+.logo-text {
   display: inline;
   position: absolute;
   left: -999px;
@@ -121,6 +121,10 @@ main {
     justify-content: center;
   }
 
+  .nav-item:last-child {
+    margin-right: 0;
+  }
+
   main {
     margin: 0;
   }
@@ -142,13 +146,11 @@ main {
     display: inline;
   }
 
-  .navbar:hover .logo svg
-  {
+  .navbar:hover .logo svg {
     margin-left: 11rem;
   }
 
-  .navbar:hover .logo-text
-  {
+  .navbar:hover .logo-text {
     left: 0px;
   }
 }
@@ -161,21 +163,7 @@ main {
     height: 100vh;
   }
 
-  .navbar:hover {
-    width: 14.6em;
-  }
-
-  .navbar:hover .link-text {
-    display: inline;
-  }
-
-  .navbar:hover .logo svg
-  {
-    margin-left: 11rem;
-  }
-
-  .navbar:hover .logo-text
-  {
-    left: 0px;
+  .logo {
+    display: none;
   }
 }

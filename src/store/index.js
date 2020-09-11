@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { apolloClient } from "@/vue-apollo";
+import {apolloClient} from "@/vue-apollo";
 
 import gql from 'graphql-tag';
 
@@ -24,7 +24,7 @@ export default new Vuex.Store({
         loading: state => state.loading,
     },
     actions: {
-        async fetchProjects({ commit }) {
+        async fetchProjects({commit}) {
             commit('SET_LOADING', true)
             try {
                 const response = await apolloClient.query({
@@ -51,6 +51,5 @@ export default new Vuex.Store({
             commit('SET_LOADING', false);
         },
     },
-    modules: {
-    }
+    modules: {}
 })

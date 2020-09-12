@@ -15,9 +15,9 @@
             <vStepProgress :items="studys"></vStepProgress>
         </div>
         <hr class="separator" />
-        <div class="work-div">
+        <div class="job-div">
             <h2>Experience</h2>
-            <vStepProgress :items="works"></vStepProgress>
+            <vStepProgress :items="jobs"></vStepProgress>
         </div>
 
     </div>
@@ -45,7 +45,7 @@ export default {
                     content: "Brevet"
                 },
             ],
-            works: []
+            jobs: []
         }
     },
     components: {

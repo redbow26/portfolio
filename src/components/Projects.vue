@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="projects">
         <h1>Projects</h1>
         <img class="loading" src="../assets/loading.gif" alt="Loading gif" v-if="loading"/>
         <div class="project" v-if="!loading">

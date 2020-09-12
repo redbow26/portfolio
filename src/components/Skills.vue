@@ -1,17 +1,23 @@
 <template>
-    <div class="skill-div">
+    <div class="skill_div">
         <div class="skills">
             <h2>Compétences</h2>
             <skillBox skill="Python" percent="85%"></skillBox>
-            <skillBox skill="Javascript" percent="60%"></skillBox>
+            <skillBox skill="Node JS" percent="60%"></skillBox>
+            <skillBox skill="Java" percent="70%"></skillBox>
+            <skillBox skill="PHP" percent="50%"></skillBox>
+            <skillBox skill="SQL" percent="50%"></skillBox>
+            <skillBox skill="MongoDB" percent="60%"></skillBox>
         </div>
-        <hr/>
+        <hr class="separator" />
         <div class="study-div">
-
+            <h2>Études</h2>
+            <vStepProgress :items="studys"></vStepProgress>
         </div>
-        <hr/>
+        <hr class="separator" />
         <div class="work-div">
-
+            <h2>Experience</h2>
+            <vStepProgress :items="works"></vStepProgress>
         </div>
 
     </div>
@@ -20,8 +26,31 @@
 <script>
 export default {
     name: "Skill",
+    data() {
+        return {
+            studys: [
+                {
+                    time: "2019-2021",
+                    title: "IUT de Lens",
+                    content: "DUT informatique"
+                },
+                {
+                    time: "2016-2019",
+                    title: "Lycée Pablo Picasso Avion",
+                    content: "Baccalauréat série scientifique option SVT"
+                },
+                {
+                    time: "2013-2016",
+                    title: "Collège Jean Jacques Rousseau Avion",
+                    content: "Brevet"
+                },
+            ],
+            works: []
+        }
+    },
     components: {
-        skillBox: () => import('@/components/skillBox')
+        skillBox: () => import('@/components/skillBox'),
+        vStepProgress: () => import('@/components/vStepProgress')
     }
 }
 </script>

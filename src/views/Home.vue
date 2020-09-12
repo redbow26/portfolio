@@ -167,18 +167,19 @@
 
 <script>
 // @ is an alias to /src
+import About from "@/components/About"
 
 export default {
     name: 'Home',
     components: {
-        About: () => import("@/components/About"),
+        About,
         Contact: () => import("@/components/Contact"),
         Projects: () => import("@/components/Projects"),
         Skills: () => import('@/components/Skills')
     },
     data() {
         return {
-            component: "Projects"
+            component: "About"
         }
     },
     methods: {

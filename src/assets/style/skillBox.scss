@@ -31,7 +31,7 @@
 
 .skill_level {
   background: $red;
-  background: linear-gradient(90deg, $yellow 0%, $orange 40%, $red 100%);
+  background: linear-gradient(90deg, $yellow 0%, $red add(100%, subtract(100%, var(--percent))));
   height: 10px;
   border-radius: 3px;
 }

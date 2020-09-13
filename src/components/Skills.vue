@@ -4,9 +4,6 @@
             <h2>Compétences</h2>
             <skillBox skill="Python" percent="85%"></skillBox>
             <skillBox skill="Node JS" percent="60%"></skillBox>
-            <skillBox skill="Java" percent="70%"></skillBox>
-            <skillBox skill="PHP" percent="50%"></skillBox>
-            <skillBox skill="SQL" percent="50%"></skillBox>
             <skillBox skill="MongoDB" percent="60%"></skillBox>
         </div>
         <hr class="separator" />

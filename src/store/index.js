@@ -46,7 +46,7 @@ export default new Vuex.Store({
                     commit('SET_PROJECTS', response.data.projects)
                 }
             } catch (e) {
-                Vue.prototype.$snotify.error("Can't fetch data", "error")
+                Vue.prototype.$snotify.error("Impossible de récupérer les données", "Erreur")
             }
             commit('SET_LOADING', false);
         },

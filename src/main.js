@@ -5,6 +5,7 @@ import router from './router'
 import store from './store'
 import apolloProvider from './vue-apollo'
 import Snotify from 'vue-snotify'
+import VueKonami from 'vue-konami'
 import 'vue-snotify/styles/dark.css'
 import './Boostrap-vue'
 
@@ -19,6 +20,8 @@ const option = {
 }
 
 Vue.use(Snotify, option)
+
+Vue.use(VueKonami)
 
 new Vue({
     router,

@@ -1,5 +1,5 @@
 <template>
-    <div class="projects_div">
+    <div class="projects_div" v-konami:opts.custom="furryEgg">
         <h2>Projets</h2>
         <div class="filter" v-if="!loading">
             <div class="language">
@@ -47,7 +47,6 @@ import {mapActions, mapGetters} from 'vuex'
 export default {
     name: "Projects",
     data() {
-
         return {
             buttonsLang: [
                 { caption: 'Python', state: true },
@@ -55,7 +54,11 @@ export default {
             ],
             buttonsCate: [
                 { caption: 'Discord Bot', state: true },
-            ]
+            ],
+            opts: {
+                timeout: 3000,
+                chain: '70-85-82-82-89'
+            }
         }
     },
     computed: {
@@ -67,7 +70,7 @@ export default {
             const language = this.buttonsLang.filter(btn => btn.state)
                 .map(btn => btn.caption.toLowerCase())
 
-            let p = []
+            let p
 
             if (category.length >= 1 && language.length >= 1) {
                 p = this.projects.filter(project =>
@@ -92,7 +95,10 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['fetchProjects'])
+        ...mapActions(['fetchProjects', 'setLoading']),
+        furryEgg() {
+            this.setLoading(!this.loading);
+        }
     },
     activated() {
         this.fetchProjects()

@@ -50,6 +50,9 @@ export default new Vuex.Store({
             }
             commit('SET_LOADING', false);
         },
+        setLoading({commit}, loading) {
+            commit('SET_LOADING', loading)
+        }
     },
     modules: {}
 })

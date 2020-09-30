@@ -1,0 +1,50 @@
+@import "src/assets/style/custom";
+
+h2 {
+  padding-bottom: 2rem;
+}
+
+.info {
+  text-align: center;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+
+  span {
+    color: $red;
+    padding-bottom: 1rem;
+  }
+
+  p {
+    line-height: 2rem;
+  }
+
+  .cv-link {
+    color: $red;
+    text-decoration: none;
+    text-align: center;
+
+    &:hover, &:visited {
+      color: $red;
+    }
+  }
+}
+
+.about_div {
+  margin: 0 auto;
+
+  p {
+    margin: 0 auto;
+  }
+}
+
+/* Large screens */
+@media only screen and (min-width: 600px) {
+
+  .about_div {
+    margin: 0 3rem;
+
+    p {
+      margin: 0 3rem;
+    }
+  }
+}

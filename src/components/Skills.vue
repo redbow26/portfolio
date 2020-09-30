@@ -28,21 +28,20 @@ export default {
             studys: [
                 {
                     time: "2019-2021",
-                    title: "IUT de Lens",
-                    content: "DUT informatique"
+                    title: "DUT informatique",
+                    content: "Preparation d'un DUT informatique a l'iut de lens"
                 },
                 {
                     time: "2016-2019",
-                    title: "Lycée Pablo Picasso Avion",
-                    content: "Baccalauréat série scientifique option SVT"
-                },
-                {
-                    time: "2013-2016",
-                    title: "Collège Jean Jacques Rousseau Avion",
-                    content: "Brevet"
-                },
+                    title: "Baccalauréat",
+                    content: "Optention du baccalauréat série scientifique"
+                }
             ],
-            jobs: []
+            jobs: [{
+                time: "2019-2020",
+                title: "Cours d'informatique",
+                content: "Cours de programmation sur python dans le lycée Pablo Picasso a Avion"
+            },]
         }
     },
     components: {

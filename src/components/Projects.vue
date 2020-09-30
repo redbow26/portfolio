@@ -1,10 +1,39 @@
 <template>
-    <div class="projects">
-        <h1>Projects</h1>
+    <div class="projects_div">
+        <h2>Projets</h2>
+        <div class="filter" v-if="!loading">
+            <div class="language">
+                <span>Langage : </span>
+                <b-button-group size="sm">
+                    <b-button
+                        v-for="(btn, idx) in buttonsLang"
+                        :key="idx"
+                        :pressed.sync="btn.state"
+                        variant="danger"
+                    >
+                        {{ btn.caption }}
+                    </b-button>
+                </b-button-group>
+            </div>
+            <div class="category">
+                <span>Categories: </span>
+                <b-button-group size="sm">
+                    <b-button
+                        v-for="(btn, idx) in buttonsCate"
+                        :key="idx"
+                        :pressed.sync="btn.state"
+                        variant="danger"
+                    >
+                        {{ btn.caption }}
+                    </b-button>
+                </b-button-group>
+            </div>
+        </div>
+
         <img class="loading" src="../assets/loading.gif" alt="Loading gif" v-if="loading"/>
-        <div class="project" v-if="!loading">
+        <div class="projects" v-if="!loading">
             <ul>
-                <li v-for="project in projects" :key="project._id">
+                <li v-for="project in filtered" :key="project._id">
                     <a :href="'#' +  project._id">{{ project.name }}</a>
                 </li>
             </ul>
@@ -17,8 +46,50 @@ import {mapActions, mapGetters} from 'vuex'
 
 export default {
     name: "Projects",
+    data() {
+
+        return {
+            buttonsLang: [
+                { caption: 'Python', state: true },
+                { caption: 'Nodejs', state: true },
+            ],
+            buttonsCate: [
+                { caption: 'Discord Bot', state: true },
+            ]
+        }
+    },
     computed: {
-        ...mapGetters(['projects', 'loading'])
+        ...mapGetters(['projects', 'loading']),
+        filtered: function () {
+            const category = this.buttonsCate.filter(btn => btn.state)
+                .map(btn => btn.caption.toLowerCase())
+
+            const language = this.buttonsLang.filter(btn => btn.state)
+                .map(btn => btn.caption.toLowerCase())
+
+            let p = []
+
+            if (category.length >= 1 && language.length >= 1) {
+                p = this.projects.filter(project =>
+                    project.language.some(r => language.indexOf(r) >= 0) &&
+                    project.category.some(r => category.indexOf(r) >= 0)
+                )
+            }
+            else if (category.length >= 1 ) {
+                p = this.projects.filter(project =>
+                    project.category.some(r => category.indexOf(r) >= 0)
+                )
+            }
+            else if (language.length >= 1) {
+                p = this.projects.filter(project =>
+                    project.language.some(r => language.indexOf(r) >= 0)
+                )
+            }
+            else {
+                p = this.projects
+            }
+        return p
+        }
     },
     methods: {
         ...mapActions(['fetchProjects'])
@@ -29,11 +100,5 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.loading {
-    margin-top: 5rem;
-    margin-left: 6rem;
-    width: 15rem;
-}
-</style>
+<style src="../assets/style/projects.scss" lang="scss" scoped></style>
 

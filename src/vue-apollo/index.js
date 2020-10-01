@@ -10,7 +10,7 @@ Vue.use(VueApollo)
 // HTTP connection to the API
 const httpLink = createHttpLink({
     // You should use an absolute URL here
-    uri: 'http://localhost:3001/api',
+    uri: 'http://tristan-leroy.fr:3001/api',
 })
 
 // Cache implementation

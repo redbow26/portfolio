@@ -5,9 +5,8 @@
             <p>
                 <span>{{ age }} ans</span> / <span>France</span> / <span>Junior</span>
                 <br>
-                <br>
             </p>
-            <router-link class="cv-link" to="cv">Mon cv</router-link>
+            <span class="clickable" @click="onConfirmation">Mon cv</span>
         </div>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam aperiam dignissimos doloremque dolores eveniet facere illo, in, labore laboriosam magni maiores natus, reprehenderit temporibus totam. Aliquid consectetur impedit neque!
@@ -21,10 +20,51 @@ export default {
     name: "About",
     data() {
         return {
-            askCV: false
+            askCV: false,
+            publicPath: process.env.BASE_URL
         }
     },
     methods: {
+        displayCV() {
+            console.log("CV")
+        },
+        onConfirmation() {
+            if (this.askCV) return;
+            this.askCV = true;
+            /*
+            Here we pass an buttons array, which contains of 2 element of type SnotifyButton
+             */
+            const toast = this.$snotify.confirm(
+                "CV",
+                {
+                    buttons: [
+                        {text: 'Français',
+                            action: () => {
+                                window.open(`${this.publicPath}resume.pdf`, '_blank');
+                                this.askCV = false;
+                                this.$snotify.remove(toast.id);
+                            },
+                            bold: false
+                        },
+                        {text: 'English',
+                            action: () => {
+                                window.open(`${this.publicPath}resume.pdf`, '_blank');
+                                this.askCV = false;
+                                this.$snotify.remove(toast.id);
+                            },
+                            bold: false
+                        },
+                        {text: 'Annuler',
+                            action: () => {
+                                this.askCV = false;
+                                this.$snotify.remove(toast.id);
+                            },
+                            bold: false
+                        }
+                    ]
+                }
+            );
+        }
     },
     computed: {
         age: () => {

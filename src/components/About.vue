@@ -3,13 +3,13 @@
         <h2>À propos de moi</h2>
         <div class="info">
             <p>
-                <span>{{ age }} ans</span> / <span>France</span> / <span>Junior</span>
+                <span class="clickable" @click="displayCV">Afficher mon cv</span> / <span class="clickable" @click="downloadCV">Télécharger mon cv</span>
                 <br>
+                <span>{{ age }} ans</span> / <span>France</span> / <span>Junior</span>
             </p>
-            <span class="clickable" @click="onConfirmation">Mon cv</span>
         </div>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam aperiam dignissimos doloremque dolores eveniet facere illo, in, labore laboriosam magni maiores natus, reprehenderit temporibus totam. Aliquid consectetur impedit neque!
+            Développeur
         </p>
         <hr />
     </div>
@@ -26,19 +26,19 @@ export default {
     },
     methods: {
         displayCV() {
-            console.log("CV")
-        },
-        onConfirmation() {
             if (this.askCV) return;
             this.askCV = true;
             /*
             Here we pass an buttons array, which contains of 2 element of type SnotifyButton
              */
             const toast = this.$snotify.confirm(
-                "CV",
+                "Choix de la langue",
+                "Mon CV",
                 {
+                    position: "rightTop",
                     buttons: [
-                        {text: 'Français',
+                        {
+                            text: 'Français',
                             action: () => {
                                 window.open(`${this.publicPath}resume.pdf`, '_blank');
                                 this.askCV = false;
@@ -46,7 +46,8 @@ export default {
                             },
                             bold: false
                         },
-                        {text: 'English',
+                        {
+                            text: 'Anglais',
                             action: () => {
                                 window.open(`${this.publicPath}resume.pdf`, '_blank');
                                 this.askCV = false;
@@ -54,7 +55,8 @@ export default {
                             },
                             bold: false
                         },
-                        {text: 'Annuler',
+                        {
+                            text: 'Annuler',
                             action: () => {
                                 this.askCV = false;
                                 this.$snotify.remove(toast.id);
@@ -64,7 +66,58 @@ export default {
                     ]
                 }
             );
-        }
+        },
+        downloadCV() {
+            if (this.askCV) return;
+            this.askCV = true;
+            const download = (file_path) => {
+                let a = document.createElement('A');
+                a.href = file_path;
+                a.download = file_path.substr(file_path.lastIndexOf('/') + 1);
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+            }
+            /*
+            Here we pass an buttons array, which contains of 2 element of type SnotifyButton
+             */
+            const toast = this.$snotify.confirm(
+                "Choix de la langue",
+                "Mon CV",
+                {
+                    position: "rightTop",
+                    buttons: [
+                        {
+                            text: 'Français',
+                            action: () => {
+                                download(`${this.publicPath}resume.pdf`);
+                                this.askCV = false;
+                                this.$snotify.remove(toast.id);
+                            },
+                            bold: false
+                        },
+                        {
+                            text: 'Anglais',
+                            action: () => {
+                                download(`${this.publicPath}resume.pdf`);
+                                this.askCV = false;
+                                this.$snotify.remove(toast.id);
+                            },
+                            bold: false
+                        },
+                        {
+                            text: 'Annuler',
+                            action: () => {
+                                this.askCV = false;
+                                this.$snotify.remove(toast.id);
+                            },
+                            bold: false
+                        }
+                    ]
+                }
+            );
+        },
     },
     computed: {
         age: () => {

@@ -63,6 +63,7 @@ export default {
     methods: {
         switchComponent(component) {
             this.component = component
+            this.toggleNav()
         },
         toggleNav(){
             if (this.navbar === "")

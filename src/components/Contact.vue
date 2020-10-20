@@ -71,7 +71,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="mailto:">
+                    <a href="mailto:contact@tristan-leroy.fr">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"

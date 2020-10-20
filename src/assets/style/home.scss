@@ -61,16 +61,7 @@ main {
   white-space: nowrap;
 }
 .toggle {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 60px;
-  height: 60px;
-  background: $gray-750;
-  cursor: pointer;
-}
-.toggle.active {
-  background: $red;
+  visibility: hidden;
 }
 .toggle:before {
   content: '\f0c9';
@@ -88,16 +79,29 @@ main {
 }
 @media (max-width: 767px) {
   .toggle {
+    visibility: visible;
+    position: absolute;
+    top: 0;
     left: 0;
+    width: 60px;
+    height: 60px;
+    background: $gray-750;
+    cursor: pointer;
+  }
+  .toggle.active {
+    background: $red;
   }
   .toggle.active {
     z-index: 101;
      position: fixed;
    }
-  .navbar {
-    left: -60px;
+  .navbar,
+  .navbar:hover {
+    visibility: hidden;
+    width: 0;
   }
   .navbar.active {
+    visibility: visible;
     z-index: 100;
     left: 0;
     width: 100%;

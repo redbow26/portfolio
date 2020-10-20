@@ -51,14 +51,15 @@ h2 {
 }
 
 /* Small screens */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 767px) {
   .contact_div {
     display: inline-block;
   }
+  .contact-list ul {
+    box-sizing: unset;
+    text-align: center;
+  }
   .contact-list, .contact-form {
     margin: 0 auto;
-  }
-  .contact-list {
-    margin-left: -1rem;
   }
 }

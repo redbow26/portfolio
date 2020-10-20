@@ -52,6 +52,17 @@ $theme-colors: map-merge(
                 $theme-colors
 );
 
+@media (prefers-color-scheme: dark) {
+  $body-bg: $dark;
+  $body-color: $light;
+
+  $text-primary-nav: #b6b6b6;
+  $text-secondary-nav: #ececec;
+  $bg-primary-nav: #23232e;
+  $bg-secondary-nav: #141418;
+  $transition-speed-nav: 600ms;
+}
+
 $body-bg: $dark;
 $body-color: $light;
 

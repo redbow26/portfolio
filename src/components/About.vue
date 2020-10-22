@@ -40,7 +40,7 @@ export default {
                         {
                             text: 'Français',
                             action: () => {
-                                window.open(`${this.publicPath}resume.pdf`, '_blank');
+                                window.open(`${this.publicPath}cv_tristan_leroy_dark_fr.pdf`, '_blank');
                                 this.askCV = false;
                                 this.$snotify.remove(toast.id);
                             },
@@ -49,7 +49,7 @@ export default {
                         {
                             text: 'Anglais',
                             action: () => {
-                                window.open(`${this.publicPath}resume.pdf`, '_blank');
+                                window.open(`${this.publicPath}cv_tristan_leroy_dark_fr.pdf`, '_blank');
                                 this.askCV = false;
                                 this.$snotify.remove(toast.id);
                             },
@@ -91,7 +91,7 @@ export default {
                         {
                             text: 'Français',
                             action: () => {
-                                download(`${this.publicPath}resume.pdf`);
+                                download(`${this.publicPath}cv_tristan_leroy_light_fr.pdf`);
                                 this.askCV = false;
                                 this.$snotify.remove(toast.id);
                             },
@@ -100,7 +100,7 @@ export default {
                         {
                             text: 'Anglais',
                             action: () => {
-                                download(`${this.publicPath}resume.pdf`);
+                                download(`${this.publicPath}cv_tristan_leroy_light_fr.pdf`);
                                 this.askCV = false;
                                 this.$snotify.remove(toast.id);
                             },

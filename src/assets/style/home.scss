@@ -1,6 +1,7 @@
 @import "src/assets/style/custom";
 main {
   padding: 2rem;
+  margin-left: 60px;
 }
 
 /* Nav */
@@ -78,6 +79,10 @@ main {
   content: '\f00d';
 }
 @media (max-width: 767px) {
+  main {
+    margin-left: 0;
+  }
+
   .toggle {
     visibility: visible;
     position: absolute;

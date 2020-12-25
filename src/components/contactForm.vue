@@ -15,7 +15,6 @@
 <script>
 import gql from 'graphql-tag'
 
-
 export default {
     name: "contactForm",
     data() {
@@ -27,23 +26,23 @@ export default {
         }
     },
     methods: {
-        checkForm: function () {
+        checkForm: async function () {
             let validate = true
 
-            if (this.firstName == "") {
+            if (this.firstName === "") {
                 this.$snotify.error("Prénom invalide")
                 validate = false
             }
-            if (this.lastName == "") {
+            if (this.lastName === "") {
                 this.$snotify.error("Nom invalide")
                 validate = false
             }
-            if (this.content == "") {
+            if (this.content === "") {
                 this.$snotify.error("Message invalide")
                 validate = false
             }
             const email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/
-            if (!email_regex.test(this.email) || this.email == "") {
+            if (!email_regex.test(this.email) || this.email === "") {
                 this.$snotify.error("Email invalide")
                 validate = false
             }
@@ -58,15 +57,12 @@ export default {
                             $email: String!
                             $content: String!
                             ) {
-                            createMessage (input: {
+                            createMessage (
                                 firstName: $firstName
                                 lastName: $lastName
                                 email: $email
                                 content:$content
-                                })
-                            {
-                            email
-                            }
+                                )
                         }
                     `,
                     variables: {
@@ -76,16 +72,16 @@ export default {
                         content: this.content
                     }
                 })
-                .then(data => {
-                    this.$snotify.success("Envoi du message réussit")
-                    this.firstName = ""
-                    this.lastName = ""
-                    this.email = ""
-                    this.content = ""
-                })
-                .catch(err => {
-                    this.$snotify.error("Le message n'a pas pu être envoyer")
-                })
+                    .then(data => {
+                        this.$snotify.success("Envoi du message réussit")
+                        this.firstName = ""
+                        this.lastName = ""
+                        this.email = ""
+                        this.content = ""
+                    })
+                    .catch(err => {
+                        this.$snotify.error("Le message n'a pas pu être envoyer")
+                    })
 
             }
 

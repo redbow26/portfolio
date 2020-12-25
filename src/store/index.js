@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {apolloClient} from "@/vue-apollo";
+//import {apolloClient} from "@/vue-apollo";
 
 import gql from 'graphql-tag';
 
@@ -23,10 +23,11 @@ export default new Vuex.Store({
         projects: state => state.projects,
         loading: state => state.loading,
     },
-    actions: {
+    actions: {/*
         async fetchProjects({commit}) {
             commit('SET_LOADING', true)
             try {
+
                 const response = await apolloClient.query({
                     query: gql`
                     query {
@@ -49,7 +50,7 @@ export default new Vuex.Store({
                 Vue.prototype.$snotify.error("Impossible de récupérer les données", "Erreur")
             }
             commit('SET_LOADING', false);
-        },
+        },*/
         setLoading({commit}, loading) {
             commit('SET_LOADING', loading)
         }

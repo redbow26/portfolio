@@ -32,18 +32,40 @@
 
         <img class="loading" src="../assets/loading.gif" alt="Loading gif" v-if="loading"/>
         <div class="projects" v-if="!loading">
-            <ul>
-                <li v-for="project in filtered" :key="project._id">
-                    <a :href="'#' +  project._id">{{ project.name }}</a>
-                </li>
-            </ul>
+            <ProjectCard
+                name="Test"
+                date="Today"
+                shortDescription="Petite description"
+                description="Description"
+                projectUrl="Projet"
+                imageUrl="https://www.geronimo-agency.com/wp-content/uploads/2019/09/Webp.net-resizeimage.png"
+                :category="['Categories', '2']"
+                :language="['JavaScript', 'typescript', 'python']"
+            ></ProjectCard><ProjectCard
+            name="Test"
+            date="Today"
+            shortDescription=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate ante eu lorem porta ante. "
+            description="Description"
+            githubUrl="Github"
+            projectUrl="Projet"
+            imageUrl="https://www.geronimo-agency.com/wp-content/uploads/2019/09/Webp.net-resizeimage.png"
+            :category="['Categories', '2']"
+            :language="['JavaScript', 'typescript', 'python']"
+        ></ProjectCard><ProjectCard
+            name="Test"
+            date="Today"
+            shortDescription="Petite description"
+            description="Description"
+            githubUrl="Github"
+            imageUrl="https://www.geronimo-agency.com/wp-content/uploads/2019/09/Webp.net-resizeimage.png"
+            :category="['Categories', '2']"
+            :language="['JavaScript', 'typescript', 'python']"
+        ></ProjectCard>
         </div>
     </div>
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex'
-
 export default {
     name: "Projects",
     data() {
@@ -58,50 +80,17 @@ export default {
             opts: {
                 timeout: 3000,
                 chain: '70-85-82-82-89'
-            }
-        }
-    },
-    computed: {
-        ...mapGetters(['projects', 'loading']),
-        filtered: function () {
-            const category = this.buttonsCate.filter(btn => btn.state)
-                .map(btn => btn.caption.toLowerCase())
-
-            const language = this.buttonsLang.filter(btn => btn.state)
-                .map(btn => btn.caption.toLowerCase())
-
-            let p
-
-            if (category.length >= 1 && language.length >= 1) {
-                p = this.projects.filter(project =>
-                    project.language.some(r => language.indexOf(r) >= 0) &&
-                    project.category.some(r => category.indexOf(r) >= 0)
-                )
-            }
-            else if (category.length >= 1 ) {
-                p = this.projects.filter(project =>
-                    project.category.some(r => category.indexOf(r) >= 0)
-                )
-            }
-            else if (language.length >= 1) {
-                p = this.projects.filter(project =>
-                    project.language.some(r => language.indexOf(r) >= 0)
-                )
-            }
-            else {
-                p = this.projects
-            }
-        return p
+            },
+            loading: false,
         }
     },
     methods: {
-        ...mapActions(['fetchProjects', 'setLoading']),
         furryEgg() {
-            this.setLoading(!this.loading);
+            this.loading = !this.loading;
         }
     },
-    activated() {
-        this.fetchProjects()
+    components: {
+        ProjectCard: () => import('@/components/ProjectCard')
     }
 }
 </script>

@@ -11,5 +11,22 @@
 }
 
 .language, .category {
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
+
+.projects {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.projects > .project {
+  margin: 70px 40px 10px;
+}
+.projects:first-child, .projects:last-child {
+  margin: 0 !important;
+}
+

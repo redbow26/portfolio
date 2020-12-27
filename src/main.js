@@ -6,6 +6,7 @@ import Snotify from 'vue-snotify'
 import VueKonami from 'vue-konami'
 import 'vue-snotify/styles/dark.css'
 import './Boostrap-vue'
+import markdown from './directives/markdown';
 
 Vue.config.productionTip = false
 
@@ -21,6 +22,8 @@ const option = {
 Vue.use(Snotify, option)
 
 Vue.use(VueKonami)
+
+Vue.directive('markdown', markdown)
 
 new Vue({
     router,

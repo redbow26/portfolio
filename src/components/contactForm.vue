@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
+import createMessage from '../graphql/createMessage.graphql';
 
 export default {
     name: "contactForm",
@@ -50,21 +50,7 @@ export default {
             if (validate) {
 
                 this.$apollo.mutate({
-                    mutation: gql`
-                        mutation createMessage (
-                            $firstName: String!
-                            $lastName: String!
-                            $email: String!
-                            $content: String!
-                            ) {
-                            createMessage (
-                                firstName: $firstName
-                                lastName: $lastName
-                                email: $email
-                                content:$content
-                                )
-                        }
-                    `,
+                    mutation: createMessage,
                     variables: {
                         firstName: this.firstName,
                         lastName: this.lastName,

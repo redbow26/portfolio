@@ -1,0 +1,19 @@
+mutation createProject (
+    $name: String!
+    $description: String!
+    $imageUrl: String!
+    $githubUrl: String
+    $projectUrl: String
+    $category: [String!]!
+    $language: [String!]!
+) {
+    createProject (
+        name: $name
+        description: $description
+        imageUrl: $imageUrl
+        githubUrl: $githubUrl
+        projectUrl: $projectUrl
+        category: $category
+        language: $language
+    )
+}

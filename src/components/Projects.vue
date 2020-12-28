@@ -33,39 +33,24 @@
         <img class="loading" src="../assets/loading.gif" alt="Loading gif" v-if="loading"/>
         <div class="projects" v-if="!loading">
             <ProjectCard
-                name="Test"
-                date="Today"
-                shortDescription="Petite description"
-                description="Description"
-                projectUrl="Projet"
-                imageUrl="https://www.geronimo-agency.com/wp-content/uploads/2019/09/Webp.net-resizeimage.png"
-                :category="['Categories', '2']"
-                :language="['JavaScript', 'typescript', 'python']"
-            ></ProjectCard><ProjectCard
-            name="Test"
-            date="Today"
-            shortDescription=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate ante eu lorem porta ante. "
-            description="Description"
-            githubUrl="Github"
-            projectUrl="Projet"
-            imageUrl="https://www.geronimo-agency.com/wp-content/uploads/2019/09/Webp.net-resizeimage.png"
-            :category="['Categories', '2']"
-            :language="['JavaScript', 'typescript', 'python']"
-        ></ProjectCard><ProjectCard
-            name="Test"
-            date="Today"
-            shortDescription="Petite description"
-            description="Description"
-            githubUrl="Github"
-            imageUrl="https://www.geronimo-agency.com/wp-content/uploads/2019/09/Webp.net-resizeimage.png"
-            :category="['Categories', '2']"
-            :language="['JavaScript', 'typescript', 'python']"
-        ></ProjectCard>
+                v-for="project in projects"
+                :key="project.id"
+                :name="project.name"
+                :date="project.date"
+                :description="project.description"
+                :githubUrl="project.githubUrl"
+                :projectUrl="project.projectUrl"
+                :imageUrl="project.imageUrl ? project.imageUrl : ''"
+                :category="project.category ? project.category : []"
+                :language="project.language ? project.language : []"
+            ></ProjectCard>
         </div>
     </div>
 </template>
 
 <script>
+import projectsQuery from '../graphql/projects.graphql'
+
 export default {
     name: "Projects",
     data() {
@@ -81,8 +66,24 @@ export default {
                 timeout: 3000,
                 chain: '70-85-82-82-89'
             },
-            loading: false,
+            projects: [],
+            loading: true,
         }
+    },
+    mounted: async function() {
+        const projects = await this.$apollo.query({
+            query: projectsQuery
+        })
+
+        if (projects.data.projects) {
+            this.projects = projects.data.projects
+        } else {
+            this.projects = []
+            this.$snotify.error("Impossible de récupérer les données", "Erreur")
+        }
+
+        this.loading = false;
+
     },
     methods: {
         furryEgg() {

@@ -1,0 +1,12 @@
+query {
+    projects {
+        id
+        name
+        description
+        githubUrl
+        projectUrl
+        imageUrl
+        category
+        language
+    }
+}

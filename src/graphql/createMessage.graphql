@@ -1,0 +1,13 @@
+mutation createMessage (
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $content: String!
+) {
+    createMessage (
+        firstName: $firstName
+        lastName: $lastName
+        email: $email
+        content:$content
+    )
+}

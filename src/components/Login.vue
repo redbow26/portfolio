@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
+import login from '../graphql/login.graphql';
 import {onLogin} from "@/vue-apollo";
 
 export default {
@@ -24,13 +24,7 @@ name: "Login",
         checkForm: async function () {
 
             const data = await this.$apollo.mutate({
-                mutation: gql`
-                    mutation login($email: String!, $password: String!) {
-                      login (password: $password email: $email) {
-                        accessToken
-                      }
-                    }
-                `,
+                mutation: login,
                 variables: {
                     email: this.email,
                     password: this.password

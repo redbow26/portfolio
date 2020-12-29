@@ -25,17 +25,18 @@
             </div>
 
             <div class="link">
-                <button class="btn-project" v-if="githubUrl" :href="githubUrl">
+                <a class="btn-project" v-if="githubUrl" :href="githubUrl">
                     <i class="fab fa-github"></i> Lien vers github
-                </button>
-                <button class="btn-project" v-if="projectUrl" :href="projectUrl">Lien vers le projet</button>
+                </a>
+                <a class="btn-project" v-if="projectUrl" :href="projectUrl">Lien vers le projet</a>
             </div>
-            <button class="btn-project">Plus de details</button>
+            <button v-b-modal="id" class="btn-project">Plus de details</button>
         </div>
 
         <div class="background">
 
         </div>
+        <ProjectModal :id="id" :name="name" :description="description" :githubUrl="githubUrl" :projectUrl="projectUrl"></ProjectModal>
     </div>
 
 </template>
@@ -44,6 +45,7 @@
 export default {
     name: "ProjectCard",
     props: [
+        "id",
         "name",
         "date",
         "shortDescription",
@@ -53,7 +55,10 @@ export default {
         "imageUrl",
         "category",
         "language",
-    ]
+    ],
+    components: {
+        ProjectModal: () => import('@/components/ProjectModal')
+    }
 }
 </script>
 

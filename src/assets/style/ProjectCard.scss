@@ -46,6 +46,10 @@ img {
   }
 }
 
+a.btn-project {
+  margin-top: 15px;
+}
+
 .btn-project {
   cursor: pointer;
   border: 0;
@@ -54,6 +58,12 @@ img {
   color: $light;
   padding: .5em 1.5em;
   margin: .4em;
+  display: block;
+
+  &:hover {
+    text-decoration: none;
+    color: $light;
+  }
 }
 
 .back {

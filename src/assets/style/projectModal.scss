@@ -1,0 +1,22 @@
+@import "src/assets/style/custom";
+
+::v-deep .modal-content{
+  text-align: center;
+  background-color: $gray-800;
+  color: $light;
+}
+
+.btn-project {
+  cursor: pointer;
+  border: 0;
+  background: $red;
+  border-radius: 100vw;
+  color: $light;
+  padding: .5em 1.5em;
+  margin: .4em;
+
+  &:hover {
+    text-decoration: none;
+    color: $light;
+  }
+}

@@ -1,42 +1,50 @@
 <template>
-    <div class="form">
+    <div>
+        <div class="form">
 
-        <label>
-            Nom
-            <input type="text" v-model="name" placeholder="Nom">
-        </label><br>
+            <label>
+                Nom
+                <input type="text" v-model="name" placeholder="Nom">
+            </label><br>
 
-        <label>
-            Url du github
-            <input type="text" v-model="githubUrl" placeholder="url du github">
-        </label><br>
+            <label>
+                Url du github
+                <input type="text" v-model="githubUrl" placeholder="url du github">
+            </label><br>
 
-        <label>
-            Url du projet
-            <input type="text" v-model="projectUrl" placeholder="url du projet">
-        </label><br>
+            <label>
+                Url du projet
+                <input type="text" v-model="projectUrl" placeholder="url du projet">
+            </label><br>
 
-        <label>
-            Url de l'image
-            <input type="text" v-model="imageUrl" placeholder="Url de l'image">
-        </label><br>
+            <label>
+                Url de l'image
+                <input type="text" v-model="imageUrl" placeholder="Url de l'image">
+            </label><br>
 
-        <label>
-            Categories
-            <input type="text" v-model="category" placeholder="Categories(séparer par des ,)">
-        </label><br>
+            <label>
+                Categories
+                <input type="text" v-model="category" placeholder="Categories(séparer par des ,)">
+            </label><br>
 
-        <label>
-            Langage
-            <input type="text" v-model="language" placeholder="Langage (séparer par des ,)">
-        </label><br>
+            <label>
+                Langage
+                <input type="text" v-model="language" placeholder="Langage (séparer par des ,)">
+            </label><br>
 
-        <label>
-            Description
-            <textarea v-model="description" placeholder="Votre description (supporte le markdown)"></textarea>
-        </label><br>
+            <label>
+                Description
+                <textarea v-model="description" placeholder="Votre description (supporte le markdown)"></textarea>
+            </label><br>
 
-        <button @click="checkForm">Ajouter un projet</button>
+            <button @click="checkForm">Ajouter un projet</button>
+        </div>
+
+        <div class="test">
+            <br><br><br>
+            <span>Markdown Preview:</span>
+            <div :key="description" v-markdown>{{description}}</div>
+        </div>
     </div>
 </template>
 
@@ -48,6 +56,7 @@ export default {
     name: "Admin",
     data() {
         return {
+            test: "",
             name: "",
             githubUrl: "",
             projectUrl: "",
@@ -88,8 +97,12 @@ export default {
             }
 
             if (validate) {
-                const category = this.category.split(',')
-                const language = this.language.split(',')
+                let category = this.category.split(',')
+                let language = this.language.split(',')
+                if (category[0] === '')
+                    category = []
+                if (language[0] === '')
+                    language = []
 
                 this.$apollo.mutate({
                     mutation: createProject,

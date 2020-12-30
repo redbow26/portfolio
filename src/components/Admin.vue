@@ -74,10 +74,9 @@ export default {
         if (me.data.me === null)
             this.$router.push({name: "Login"})
 
-        /*
         if (!me.data.me.roles.includes("ADMIN"))
             this.$router.push({name:"Home"})
-        */
+
     },
     methods: {
         checkForm: async function () {

@@ -47,6 +47,7 @@ const refreshTokenLink = new TokenRefreshLink({
     },
     // Fetch new access token
     fetchAccessToken: () => {
+        console.log(process.env.VUE_APP_API_URI + '/test');
         return fetch(process.env.VUE_APP_API_URI + '/refresh_token', {
             method: 'POST',
             credentials: "include"

@@ -12,7 +12,7 @@ const AUTH_TOKEN = "apollo_token"
 
 const httpLink = createHttpLink({
     // URL FOR API
-    uri: 'http://tristan-leroy.fr:3001/graphql',
+    uri: 'http://localhost:3001/graphql',
     credentials: "include"
 });
 
@@ -47,7 +47,7 @@ const refreshTokenLink = new TokenRefreshLink({
     },
     // Fetch new access token
     fetchAccessToken: () => {
-        return fetch('http://tristan-leroy.fr:3001/refresh_token', {
+        return fetch('http://localhost:3001/refresh_token', {
             method: 'POST',
             credentials: "include"
         });

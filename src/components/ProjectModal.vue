@@ -1,7 +1,5 @@
 <template>
-    <b-modal :id="id" hide-header hide-footer>
-        <h1 class="title">{{name}}</h1>
-        <hr>
+    <b-modal :id="id" :title="name" hide-footer>
 
         <div v-markdown class="description">
             {{description}}

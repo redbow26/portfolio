@@ -12,6 +12,11 @@
             Développeur
         </p>
         <hr />
+        <p>Statistique github</p>
+        <div class="github">
+            <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=redbow26&hide=Blade&exclude_repo=Projet-S2&langs_count=5&theme=vue-dark" alt="github statistique">
+            <img align="center" src="https://github-readme-stats.vercel.app/api/?username=redbow26&theme=vue-dark" alt="github statistique">
+        </div>
     </div>
 </template>
 
